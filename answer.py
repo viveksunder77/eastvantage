@@ -16,8 +16,13 @@ final_df = customers_df.merge(sales_df,on='customer_id')\
 
 result_df = final_df.groupby(['customer_id','age','item_name']).sum('quantity').reset_index()
 
-# print(result_df[['customer_id', 'age', 'item_name', 'quantity']])
+result_df = result_df.rename(columns={
+    'customer_id': 'Customer',
+    'age': 'Age',
+    'item_name': 'Item',
+    'quantity': 'Quantity'
+})
 
-result_df.to_csv('output.csv', sep=';', index=False)
+result_df[['Customer', 'Age', 'Item', 'Quantity']].to_csv('output.csv', sep=';', index=False)
 
 
