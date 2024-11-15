@@ -1,5 +1,5 @@
 select c.customer_id as Customer,c.age as Age,
-item_name as Item,sum(quantity) as Quantity 
+i.item_name as Item,sum(o.quantity) as Quantity 
 from customers c 
 inner join sales s on c.customer_id = s.customer_id
 inner join orders o on s.sales_id = o.sales_id
